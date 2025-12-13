@@ -1,11 +1,8 @@
 
-import { Check, ChevronDown, ChevronsUpDown, Menu } from "lucide-react"
-import { Button } from '@/components/ui/button';
+import { Check, Menu } from "lucide-react"
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
@@ -26,7 +23,7 @@ export function MobileNav({className}: {className?:string}) {
        <Popover  open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         
-        <Menu aria-expanded={open} className='h-10 w-10  text-white hover:text-active  2xl:hidden'/>
+        <Menu aria-expanded={open} className={cn('h-10 w-10  text-white hover:text-active  2xl:hidden',className)}/>
 
       </PopoverTrigger>
       <PopoverContent className=" p-0 w-40">

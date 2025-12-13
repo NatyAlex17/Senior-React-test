@@ -87,7 +87,7 @@ export function DateSelector() {
             ref={containerRef}
         onScroll={handleScroll}
         >
-        {days.map((day, i) => (
+        {days.map((day, _) => (
           <Button
             key={day.date.toISOString()}
             ref={day.isToday ? todayRef : null}

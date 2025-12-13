@@ -1,11 +1,10 @@
 
-import { Check, ChevronDown, ChevronsUpDown } from "lucide-react"
+import { Check, ChevronDown } from "lucide-react"
 import { Button } from '@/components/ui/button';
 import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
@@ -15,9 +14,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils";
-export function Combobox({className, options,value,setValue,open,setOpen,emptyValue,searchValue}: {className:string, options: Array<{value: string; label: string,icon?: string}>, value: string; setValue: (val: string) => void; open: boolean; setOpen: (open: boolean) => void, emptyValue?: string; searchValue?: string}) {
+export function Combobox({className, options,value,setValue,open,setOpen,emptyValue}: {className:string, options: Array<{value: string; label: string,icon?: string}>, value: string; setValue: (val: string) => void; open: boolean; setOpen: (open: boolean) => void, emptyValue?: string; }) {
   
-    const searchPlaceholder = searchValue ? searchValue : "Search..."
     const noValueText = emptyValue ? emptyValue : "No option found."
   
     return (

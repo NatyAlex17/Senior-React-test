@@ -1,6 +1,5 @@
 import { Header } from "@/components/header";
-import { ArrowLeft, Balloon, Calendar, CalendarDays, ChevronLeft, ChevronRight, EllipsisVertical, Goal, Heart, Radio } from "lucide-react";
-import flag from '@/assets/circle-flags_uk.svg';
+import { ArrowLeft } from "lucide-react";
 import league from '@/assets/Leading Icon.svg';
 import { CornerEvent, GoalEvent } from "@/components/matchevent";
 
