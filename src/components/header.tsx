@@ -1,28 +1,12 @@
-import World from '@/assets/noto-v1_globe-showing-americas.svg?react';
 import world from '@/assets/noto-v1_globe-showing-americas.svg';
 import ball from '@/assets/noto_soccer-ball.svg';
 import flag from '@/assets/circle-flags_uk.svg';
 import league from '@/assets/Leading Icon.svg';
 
 import logo from '@/assets/image 6.png';
-import { Button } from './ui/button';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 import { useState } from 'react';
 import { Combobox } from './ui/combobox';
 import { IconComboBox } from './ui/iconcombobox';
-import { Menu } from 'lucide-react';
 import { MobileNav } from './ui/mobilenav';
 const frameworks = [
   {

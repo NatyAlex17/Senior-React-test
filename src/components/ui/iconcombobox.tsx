@@ -1,11 +1,9 @@
 
-import { Check, ChevronDown, ChevronsUpDown } from "lucide-react"
-import { Button } from '@/components/ui/button';
+import { Check } from "lucide-react"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
