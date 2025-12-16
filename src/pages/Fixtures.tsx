@@ -11,7 +11,7 @@ export function Fixtures() {
     <Header />
     <div className="font-inter tracking-wide flex flex-col px-2 py-6 gap-6 justify-center justify-self-center w-11/12 sm2:w-4/6 3xl:w-2/4 ">
       <p className="text-3xl font-semibold text-white"> Macthes </p>
-      <Button className="flex flex-row  py-10 px-12 justify-between  text-2xl font-semibold  bg-surface text-white">
+      <Button className="hidden 2xl:flex flex-row  py-10 px-12 justify-between  text-2xl font-semibold  bg-surface text-white">
             <ChevronLeft className="inline size-8 ms-4"/>
             <span>
               <CalendarDays className="inline size-8 me-3 mb-1 "/>
@@ -22,7 +22,7 @@ export function Fixtures() {
       </Button>
     
 
-    <DateSelector />
+    <DateSelector className=" 2xl:hidden"  />
 
 
 
