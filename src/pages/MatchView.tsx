@@ -48,7 +48,7 @@ useEffect(() => {
             <div className="font-inter tracking-wide flex flex-col px-2 py-6 gap-6 justify-center justify-self-center w-11/12 sm2:w-4/6 3xl:w-2/4 ">
             <div className="flex flex-col gap-4 py-2 px-6 bg-surface"> 
                     <div className="flex flex-row items-center py-2 gap-6 ">
-                        <ArrowLeft onClick={() => {navigate('/fixtures')}} className="inline size-8  stroke-white"/>
+                        <ArrowLeft onClick={() => {navigate('/')}} className="inline size-8  stroke-white"/>
                         <p className="text-2xl font-light text-white "> {match?.league.name} </p>
                     
                     </div>

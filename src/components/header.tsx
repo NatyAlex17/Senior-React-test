@@ -61,8 +61,8 @@ export function Header(){
     <header className="font-poppins flex flex-row items-center bg-header font-extralight text-2xl p-4 2xl:p-2 ">
         <img src={logo} alt="Logo" className="h-12 2xl:h-24"/>
         <div className= ' hidden 3xl:mx-6 2xl:flex flex-row items-center font-semibold text-2xl 3xl:text-3xl  justify-around  text-white  grow shrink   [&_a]:p-2 [&_a]:border-b-4 [&_a]:border-transparent [&_a.active]:border-b-active [&_a:hover]:text-active  [&_a:hover]:border-b-active '>
-            <a className={location.pathname === '/fixtures' ? 'active' : ''} href=""> Live </a>
-            <a className={location.pathname === '/fixtures' ? 'active' : ''} href=""> Matches </a>
+            <a className={location.pathname.includes( '/match') ? 'active' : ''} href=""> Live </a>
+            <a className={location.pathname === '/' ? 'active' : ''} href=""> Matches </a>
             <a href=""> Standings </a>
             <a href=""> Teams </a>
             <a href=""> Comparison </a>
