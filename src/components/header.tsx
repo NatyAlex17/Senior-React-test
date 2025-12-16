@@ -8,28 +8,14 @@ import { useState } from 'react';
 import { Combobox } from './ui/combobox';
 import { IconComboBox } from './ui/iconcombobox';
 import { MobileNav } from './ui/mobilenav';
-const frameworks = [
+import { useLocation } from 'react-router-dom';
+const leagues = [
   {
-    value: "next.js",
+    value: "Premier-League",
     label: "Premier League",
     icon : league
   },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
+
 ]
 
 const dates = [
@@ -59,21 +45,24 @@ const dates = [
 
 export function Header(){
     
+    const location = useLocation();
     const [open, setOpen] = useState(false)
-    const [value, setValue] = useState("next.js")
+    const [value, setValue] = useState("Premier-League")
     
     const [open1, setOpen1] = useState(false)
-    const [value1, setValue1] = useState("next.js")
+    const [value1, setValue1] = useState("Premier-League")
     
     const [openDate, setOpenDate] = useState(false)
     const [valueDate, setValueDate] = useState("2023")
 
+     console.log(location.pathname);
+
     return (
     <header className="font-poppins flex flex-row items-center bg-header font-extralight text-2xl p-4 2xl:p-2 ">
         <img src={logo} alt="Logo" className="h-12 2xl:h-24"/>
-        <div className= ' hidden 3xl:mx-6 2xl:flex flex-row items-center font-semibold text-2xl 3xl:text-3xl  justify-around  text-white  grow shrink   [&_a]:p-2 [&_a]:border-b-4 [&_a]:border-transparent [&_a:hover]:text-active  [&_a:hover]:border-b-active '>
-            <a className='' href=""> Live </a>
-            <a href=""> Matches </a>
+        <div className= ' hidden 3xl:mx-6 2xl:flex flex-row items-center font-semibold text-2xl 3xl:text-3xl  justify-around  text-white  grow shrink   [&_a]:p-2 [&_a]:border-b-4 [&_a]:border-transparent [&_a.active]:border-b-active [&_a:hover]:text-active  [&_a:hover]:border-b-active '>
+            <a className={location.pathname === '/fixtures' ? 'active' : ''} href=""> Live </a>
+            <a className={location.pathname === '/fixtures' ? 'active' : ''} href=""> Matches </a>
             <a href=""> Standings </a>
             <a href=""> Teams </a>
             <a href=""> Comparison </a>
@@ -85,10 +74,9 @@ export function Header(){
             <img src={world} alt="Profile" className="h-12 2xl:h-14 border-10 border-shadow rounded-full"/>
             <img src={ball} alt="Profile" className="h-12 2xl:h-14 border-10 border-shadow rounded-full"/>
             
+            <Combobox className='w-[12em] h-[2.2em] text-3xl hidden 3xl:flex' options={leagues} value={value} setValue={setValue} open={open} setOpen={setOpen} />
             
-            <Combobox className='w-[12em] h-[2.2em] text-3xl hidden 3xl:flex' options={frameworks} value={value} setValue={setValue} open={open} setOpen={setOpen} />
-            
-            <IconComboBox className=' text-3xl block 3xl:hidden ' options={frameworks} value={value1} setValue={setValue1} open={open1} setOpen={setOpen1} />
+            <IconComboBox className=' text-3xl block 3xl:hidden ' options={leagues} value={value1} setValue={setValue1} open={open1} setOpen={setOpen1} />
             
             <Combobox className='w-[7em] h-[2.2em] text-2xl 3xl:text-3xl' options={dates} value={valueDate} setValue={setValueDate} open={openDate} setOpen={setOpenDate} />
             

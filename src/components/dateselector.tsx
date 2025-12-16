@@ -1,12 +1,12 @@
-import type { DayItem } from "@/lib/types"
-import { addDays, cn, formatDay } from "@/lib/utils"
+import type { DayItem, Today } from "@/lib/types"
+import { addDays, cn, formatDay, getDay, getDayDifference } from "@/lib/utils"
 import { CalendarDays } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react"
 import { Button } from "./ui/button"
 
 const RANGE = 14
 
-export function DateSelector({className}: {className?:string}) {
+export function DateSelector({selectedDate, setSelectedDate, className}: { selectedDate: Date; setSelectedDate: Dispatch<SetStateAction<Today>>; className?:string}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const todayRef = useRef<HTMLButtonElement>(null)
 
@@ -91,9 +91,10 @@ export function DateSelector({className}: {className?:string}) {
           <Button
             key={day.date.toISOString()}
             ref={day.isToday ? todayRef : null}
-            className={`flex flex-col  ${day.isToday ? "bg-event text-active" : "bg-transparent"} hover:bg-active hover:text-black h-auto font-light shrink-0 `}
+            onClick={() => { const diff = getDayDifference(day.date, today); setSelectedDate(getDay(today, diff < 0 ? 'next' : 'prev', Math.abs(diff))); } }
+            className={`flex flex-col  ${day.date.toDateString() === selectedDate.toDateString() ? "bg-event text-active" : "bg-transparent"} hover:bg-active hover:text-black h-auto font-light shrink-0 `}
           >
-            <span className="text-2xl font-light">{day.label.split(",")[0]}</span>
+            <span className="text-2xl font-light">{ day.isToday?  "Today" : day.label.split(",")[0]}</span>
             <span className="text-lg">{day.label.split(",")[1]}</span>
           </Button>
         ))}
