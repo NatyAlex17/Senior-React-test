@@ -11,7 +11,7 @@ function App() {
    <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/fixtures" element={<Fixtures />} />
+          <Route path="/" element={<Fixtures />} />
           <Route path="/match/:eventId" element={<MatchView />} />
         </Route>
       </Routes>
