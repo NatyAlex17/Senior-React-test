@@ -7,18 +7,18 @@ export function MatchView() {
   return (
     <>
       <Header />
-      <div className="font-inter tracking-wide flex flex-col px-2 py-6 gap-6 justify-center justify-self-center w-2/4 ">
+      <div className="font-inter tracking-wide flex flex-col px-2 py-6 gap-6 justify-center justify-self-center w-11/12 sm2:w-4/6 3xl:w-2/4 ">
         <div className="flex flex-col gap-4 py-2 px-6 bg-surface"> 
                 <div className="flex flex-row items-center py-2 gap-6 ">
                     <ArrowLeft className="inline size-8  stroke-white"/>
                     <p className="text-2xl font-light text-white "> UEFA Champions League </p>
                 
                 </div>
-                <div className="flex flex-col items-center  py-2">
-                    <div className=" flex flex-row items-center gap-50 ">
+                <div className="flex flex-col items-center gap-10  py-2">
+                    <div className=" flex flex-row items-center gap-16 sm2:gap-20 3xl:gap-50 ">
                         <div className="grow flex flex-row gap-x-2 py-6 font-light text-white">
                             <div className="flex flex-col items-center gap-y-3 text-2xl font-medium  text-white">
-                                <img className="h-20" src={league} alt="" />
+                                <img className="h-16 sm2:h-20" src={league} alt="" />
                                 <p> Aresenal </p>
                             </div>
                             <span className="bg-active self-start px-1 text-xl font-semibold text-surface">2</span>
@@ -33,13 +33,13 @@ export function MatchView() {
                             <span className="bg-active self-start px-1 text-xl font-semibold text-surface">2</span>
                             <span className="bg-active self-start px-1 text-xl font-semibold text-surface">2</span>
                             <div className="flex flex-col items-center gap-y-3 text-2xl font-medium  text-white">
-                                <img className="h-20" src={league} alt="" />
+                                <img className="h-16 sm2:h-20 " src={league} alt="" />
                                 <p> Aresenal </p>
                             </div>
                             
                         </div>
                     </div>
-                    <div className= ' flex flex-row items-center font-light text-2xl   justify-around  text-white/80 mt-2 [&_a]:px-3 [&_a]:border-b-4 [&_a]:border-transparent [&_a:hover]:text-active  [&_a:hover]:border-b-active '>
+                    <div className= ' flex flex-row items-center font-light text-2xl w-full overflow-x-auto  [scrollbar-width:none]   justify-around  text-white/80 mt-2 [&_a]:p-3 [&_a]:border-b-4 [&_a]:border-transparent  [&_a:hover]:text-active  [&_a:hover]:border-b-active '>
                         <a className='' href=""> Live </a>
                         <a href=""> Matches </a>
                         <a href=""> Standings </a>

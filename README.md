@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# Match Center UI (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive match-center experience built with React, TypeScript, and Vite.  
+It recreates two main views:
 
-Currently, two official plugins are available:
+- **Match View** – a header-driven layout that spotlights a finished match, live tabs, and an events timeline (goals, corners, cards, etc.).
+- **Fixtures View** – a date-aware schedule showing live/finished/upcoming matches, filters, and contextual league data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+All data is mocked locally, so it is easy to plug in your own APIs later without touching the layout primitives.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Modern UI stack with React 19, TypeScript, Vite, and Tailwind CSS v4.
+- Custom header with responsive navigation, dropdown comboboxes, and a mobile menu (`Header`, `Combobox`, `IconComboBox`, `MobileNav`).
+- Infinite-scrolling date selector (`DateSelector`) powered by utility helpers in `src/lib`.
+- Reusable match-event atoms (`GoalEvent`, `CornerEvent`, etc.) for building rich match timelines.
+- League fixture cards with stateful styling (Finished / Live / Upcoming) and Lucide icons for interactions.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19 + TypeScript
+- Vite 7 (dev server & build)
+- Tailwind CSS 4 (with custom theme tokens defined in `src/index.css`)
+- Lucide React (icons)
+- Radix UI primitives (`@radix-ui/react-*`) for popovers, dialogs, avatars
+- Utility helpers: `clsx`, `tailwind-merge`, `cmdk` for combobox behavior
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. Install dependencies
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install   # or npm install / yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> The repo ships with a `package-lock.json`, so `npm install` will mirror the lockfile exactly.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Run the dev server
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Visit the printed URL (usually `http://localhost:5173`) to explore the Match or Fixtures view.
+
+### 3. Build for production
+
+```bash
+npm run build
+```
+
+The production bundle is written to `dist/` and can be previewed locally with `npm run preview`.
+
+### 4. Lint the project
+
+```bash
+npm run lint
+```
+
+This repository uses ESLint 9 with the TypeScript + React rules configured by Vite’s default setup.
+
+## Project Structure
+
+```
+src/
+├── App.tsx                 # Entry view (currently renders MatchView)
+├── components/             # Header, DateSelector, MatchEvent atoms, shared UI primitives
+│   └── ui/                 # Button, Combobox, Popover, Mobile nav, etc.
+├── pages/
+│   ├── Fixtures.tsx        # Schedule/list view with filters & date selector
+│   └── MatchView.tsx       # Single-match summary with events timeline
+├── lib/
+│   ├── types.ts            # Shared TypeScript types (DayItem, etc.)
+│   └── utils.ts            # Helpers such as cn(), addDays(), formatDay()
+├── index.css               # Tailwind v4 config, custom fonts, CSS variables
+└── main.tsx                # React root rendering with StrictMode
+```
+
+## Key Components
+
+- `Header` – combines branding, navigation, league/season selection comboboxes, and avatar controls.
+- `DateSelector` – infinite-h scrolling list with an inline calendar shortcut, built from utility hooks and the shared `Button` component.
+- `MatchEvent` atoms – `GoalEvent`, `CornerEvent`, `SubstitutionEvent`, `CardEvent`, `InjuryEvent`, `PenaltyEvent` for easily composing match timelines or feeds.
+- `Fixtures` page – demonstrates how to structure match cards, filters, and responsive layouts using the shared design tokens.
+
+## Customizing the UI
+
+- Replace the placeholder data in `src/pages/Fixtures.tsx` and `src/pages/MatchView.tsx` with real API responses. Because the components are stateless/presentational, you only need to feed different props.
+- Extend the `DateSelector` component to emit callbacks when a day is selected to fetch new fixtures.
+- Tailwind theme tokens (`--color-*`, fonts, breakpoints) live inside `src/index.css`. Adjust them to match your brand.
+
+## Available Scripts
+
+| Script        | Description                               |
+|---------------|-------------------------------------------|
+| `npm run dev` | Start the Vite dev server (HMR).          |
+| `npm run build` | Type-check and build optimized assets. |
+| `npm run preview` | Preview the production build locally. |
+| `npm run lint` | Run ESLint with the project config.      |
+
+Feel free to adapt this UI shell into a live football data product, odds tracker, or analytics dashboard by wiring the components to your preferred backend/API. PRs and suggestions are welcome! 

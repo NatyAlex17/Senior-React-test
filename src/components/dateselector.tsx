@@ -1,12 +1,12 @@
 import type { DayItem } from "@/lib/types"
-import { addDays, formatDay } from "@/lib/utils"
+import { addDays, cn, formatDay } from "@/lib/utils"
 import { CalendarDays } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "./ui/button"
 
 const RANGE = 14
 
-export function DateSelector() {
+export function DateSelector({className}: {className?:string}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const todayRef = useRef<HTMLButtonElement>(null)
 
@@ -81,7 +81,7 @@ export function DateSelector() {
     <>
     
 
-     <div className="relative w-full bg-surface  text-white">
+     <div className={cn("relative w-full bg-surface  text-white",className)}>
       
       <div className="flex flex-row gap-3 overflow-x-auto  [scrollbar-width:none] py-4"
             ref={containerRef}

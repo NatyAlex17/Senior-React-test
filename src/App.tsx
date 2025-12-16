@@ -1,11 +1,11 @@
 import './App.css'
-import { Fixtures } from './pages/Fixtures'
+import { MatchView } from './pages/MatchView'
 
 function App() {
   
   
   return (
-   <Fixtures/>
+   <MatchView/>
   )
 }
 
